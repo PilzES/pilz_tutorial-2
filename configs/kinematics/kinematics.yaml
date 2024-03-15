@@ -1,0 +1,6 @@
+differential_kinematics_node:
+  ros__parameters:
+    wheelDiameter: 0.125
+    robotWidth: 0.33
+    odomFrame: "odom"
+    robotBaseFrame: "base_footprint"

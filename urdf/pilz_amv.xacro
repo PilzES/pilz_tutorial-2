@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="pilz_amv">
+
+  <xacro:include filename="$(find pilz_tutorial)/urdf/xacros/body.xacro"/>
+  <xacro:include filename="$(find pilz_tutorial)/urdf/xacros/motors.xacro"/>
+  <xacro:include filename="$(find pilz_tutorial)/urdf/xacros/drive_wheel.xacro"/>
+  <xacro:include filename="$(find pilz_tutorial)/urdf/xacros/caster_wheel_front.xacro"/>
+  <xacro:include filename="$(find pilz_tutorial)/urdf/xacros/caster_wheel_back.xacro"/>
+  <xacro:include filename="$(find pilz_tutorial)/urdf/xacros/psen_scan.xacro"/>
+
+  <link name="base_footprint" />
+
+  <xacro:body name="base_link" parent="base_footprint">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:body>
+
+  <xacro:motors name="motors" parent="base_link">
+    <origin xyz="0 0 0.0625" rpy="0 0 0"/>
+  </xacro:motors>
+
+  <xacro:drive_wheel name="drive_wheel_left" parent="base_link">
+    <origin xyz="0 0.166 0.0625" rpy="1.57 0 0"/>
+  </xacro:drive_wheel>
+  <xacro:drive_wheel name="drive_wheel_right" parent="base_link">
+    <origin xyz="0 -0.166 .0625" rpy="-1.57 0 0"/>
+  </xacro:drive_wheel>
+
+  <xacro:caster_wheel_front name="caster_wheel_front_left" parent="base_link">
+    <origin xyz="0.12 0.09 0.05675" rpy="0 0 0"/>
+  </xacro:caster_wheel_front>
+  <xacro:caster_wheel_front name="caster_wheel_front_right" parent="base_link">
+    <origin xyz="0.12 -0.09 0.05675" rpy="0 0 0"/>
+  </xacro:caster_wheel_front>
+
+  <xacro:caster_wheel_back name="caster_wheel_back_left" parent="base_link">
+    <origin xyz="-0.14 0.09 0.05675" rpy="0 0 0"/>
+  </xacro:caster_wheel_back>
+  <xacro:caster_wheel_back name="caster_wheel_back_right" parent="base_link">
+    <origin xyz="-0.14 -0.09 0.05675" rpy="0 0 0"/>
+  </xacro:caster_wheel_back>
+	
+  <xacro:psen_scan prefix="laser_1" parent="base_link" ros_topic="laser_1/scan">
+    <origin xyz="0.143 0 0.239" rpy="0 3.14 3.14"/>
+  </xacro:psen_scan>
+</robot>
